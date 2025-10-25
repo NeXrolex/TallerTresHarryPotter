@@ -5,18 +5,11 @@
 package com.uDistrital.avanzada.tallerTres.control;
 
 /**
- * Lanza el programa
+ * Maneja toda la informacion de los arhivos de propiedades
+ * y aclara toda la logica del mismo
  *
  * @author Alex
  */
-public class Launcher {
-    
-    public static void main(String[] arg){
-        //Para las buenas practicas esto es lo unico que debe existir en 
-        //el launcher
-        new ControlGeneral();
-        
-        
-    }
+public class ControlProperties {
     
 }
