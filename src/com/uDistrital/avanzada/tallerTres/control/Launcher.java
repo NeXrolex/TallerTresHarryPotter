@@ -9,5 +9,8 @@ package com.uDistrital.avanzada.tallerTres.control;
  * @author Alex
  */
 public class Launcher {
-    
+
+    public static void main(String[] args) {
+        new ControlGeneral();
+    }
 }
