@@ -12,7 +12,9 @@ package com.uDistrital.avanzada.tallerTres.modelo;
 public class Mago extends Persona {
     
     private String casa;
+    private int cantidadHechizos;
     private int puntaje;
+    private boolean estadoAturdido;
     
     /**
      * Constructor que asigna atriutos del mago
@@ -60,6 +62,42 @@ public class Mago extends Persona {
      */
     public void setPuntaje(int puntaje) {
         this.puntaje = puntaje;
+    }
+    
+    /**
+     * Obtiene la cantidad de hechizos 
+     * 
+     * @return cantidad de hechizos
+     */
+    public int getCantidadHechizos() {
+        return cantidadHechizos;
+    }
+    
+    /**
+     * Asigna la cantidad de hechizos
+     * 
+     * @param cantidadHechizos Cantidad de hechizos del mago
+     */
+    public void setCantidadHechizos(int cantidadHechizos) {
+        this.cantidadHechizos = cantidadHechizos;
+    }
+    
+    /**
+     * En que estado se encuentra el jugador
+     * 
+     * @return True or false para los casos
+     */
+    public boolean isEstadoAturdido() {
+        return estadoAturdido;
+    }
+    
+    /**
+     * Asigna el estado del mago
+     * 
+     * @param estadoAturdido Estado actual del mago
+     */
+    public void setEstado(boolean estadoAturdido) {
+        this.estadoAturdido = estadoAturdido;
     }
     
     
