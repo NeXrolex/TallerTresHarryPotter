@@ -4,8 +4,6 @@
  */
 package com.uDistrital.avanzada.tallerTres.control;
 
-import com.uDistrital.avanzada.tallerTres.vista.PantallaPrincipal;
-
 /**
  *
  * @author Alex
