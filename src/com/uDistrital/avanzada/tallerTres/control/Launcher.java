@@ -4,7 +4,7 @@
  */
 package com.uDistrital.avanzada.tallerTres.control;
 
-import com.uDistrital.avanzada.tallerTres.vista.PantallaPrincipal;
+import com.uDistrital.avanzada.tallerTres.vista.VentanaPrincipal;
 
 /**
  * Lanza el programa
@@ -12,13 +12,10 @@ import com.uDistrital.avanzada.tallerTres.vista.PantallaPrincipal;
  * @author Alex
  */
 public class Launcher {
-    
-    public static void main(String[] arg){
+
+    public static void main(String[] arg) {
         //Para las buenas practicas esto es lo unico que debe existir en 
         //el launcher
         new ControlGeneral();
-        
-        
     }
-    
 }
