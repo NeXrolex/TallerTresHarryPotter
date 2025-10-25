@@ -4,10 +4,14 @@
  */
 package com.uDistrital.avanzada.tallerTres.control;
 
+import com.uDistrital.avanzada.tallerTres.vista.PantallaPrincipal;
+
 /**
  *
  * @author Alex
  */
 public class Launcher {
-    
+    public static void main(String[] arg) {      
+        
+    }
 }
