@@ -4,43 +4,33 @@
  */
 package com.uDistrital.avanzada.tallerTres.vista;
 
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
-import java.io.File;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 
 /**
  *
  * @author Alex
  */
+public class VentanaPrincipal {
 
-public class VentanaPrincipal{
-    
     JFrame ventana = new JFrame();
-    public JButton btnCargarPropsMagos= new JButton("Cargar Magos (.properties)");
-    public JButton btnCargarPropsHechizos= new JButton("Cargar Hechizos (.properties)");
+    public JButton btnCargarPropsMagos = new JButton("Cargar Magos (.properties)");
+    public JButton btnCargarPropsHechizos = new JButton("Cargar Hechizos (.properties)");
     public JButton btnIniciar = new JButton("Iniciar Partida");
     public JButton btnSalir = new JButton("Salir");
-   
+
     private GridBagConstraints gbcProp, gbcBatalla, gbcBotones, gbcVentana;
     private JPanel pnlProp, pnlBatalla, pnlBotones;
     private JPanel pnlJuego = new JPanel();
-    
-    public VentanaPrincipal(){
-        
-        ventana.setTitle("Argolla Llanera – Taller 2");
+
+    public VentanaPrincipal() {
+
+        ventana.setTitle("Duelo de magos– Taller 3");
         ventana.setSize(600, 400);
         ventana.setResizable(false);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,7 +59,7 @@ public class VentanaPrincipal{
         gbcBatalla.gridx = 1;
         gbcBatalla.gridy = 0;
         pnlBatalla.add(new JLabel("Equipo B:"), gbcBatalla);
-        
+
         pnlBotones = new JPanel(new GridBagLayout());
         gbcBotones = new GridBagConstraints();
         gbcBotones.insets = new Insets(5, 5, 5, 5);
@@ -93,7 +83,7 @@ public class VentanaPrincipal{
         gbcVentana.gridx = 0;
         gbcVentana.gridy = 2;
         ventana.add(pnlBotones, gbcVentana);
-        
+
         ventana.setLocationRelativeTo(null);
         ventana.setVisible(true);
     }
