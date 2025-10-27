@@ -4,28 +4,19 @@
  */
 package com.uDistrital.avanzada.tallerTres.vista;
 
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
-import java.io.File;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 
 /**
  *
  * @author Alex
  */
-public class VentanaPrincipal extends JFrame {
+public class VentanaPrincipal {
 
     JFrame ventana = new JFrame();
     public JButton btnCargarPropsMagos = new JButton("Cargar Magos (.properties)");
@@ -39,7 +30,7 @@ public class VentanaPrincipal extends JFrame {
 
     public VentanaPrincipal() {
 
-        ventana.setTitle("Pelea de magos - taller3");
+        ventana.setTitle("Duelo de magos– Taller 3");
         ventana.setSize(600, 400);
         ventana.setResizable(false);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
