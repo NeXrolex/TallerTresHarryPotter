@@ -14,6 +14,7 @@ import java.util.Properties;
  * Se encarga de conectar el archivo
  *
  * @author Alex
+ * @version 1.0
  */
 public class ArchivoPropiedades {
 

@@ -88,4 +88,36 @@ public class VentanaPrincipal {
         ventana.setVisible(true);
     }
 
+    /**
+     * Para cumplir con el Open/Close usamos un JFileChooser para tener la ruta
+     * donde recide el archivo de propiedades
+     *
+     * @return archivo
+     */
+    public File SolicitarArchivoPropiedades() {
+
+        JFileChooser chooser = new JFileChooser(System.getProperty("user.home"));
+        chooser.setDialogTitle("Seleccione archivo de configuración (.properties)");
+        chooser.setAcceptAllFileFilterUsed(false);
+        int result = chooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            return chooser.getSelectedFile();
+        }
+        return null;
+    }
+
+    /**
+     * Metodo encargado de mostrar mensaje empleando JOptionPane (Profe ya
+     * entendí que solo es para mensajes pequenos)
+     *
+     * @param mensaje Mensaje a mostrar
+     */
+    public void mostrarMensaje(String mensaje) {
+
+        JOptionPane.showMessageDialog(null, mensaje);
+
+    }
+    
+    
+
 }
