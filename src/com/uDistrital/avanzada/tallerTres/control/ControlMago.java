@@ -5,16 +5,14 @@
 package com.uDistrital.avanzada.tallerTres.control;
 
 /**
- * Maneja toda la informacion de los arhivos de propiedades
- * y aclara toda la logica del mismo
  *
  * @author Alex
  */
-public class ControlProperties {
+public class ControlMago {
     
     private ControlGeneral cGeneral;
 
-    public ControlProperties(ControlGeneral cGeneral) {
+    public ControlMago(ControlGeneral cGeneral) {
         this.cGeneral = cGeneral;
     }
     

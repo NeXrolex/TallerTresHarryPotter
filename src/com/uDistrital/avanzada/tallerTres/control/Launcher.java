@@ -4,7 +4,6 @@
  */
 package com.uDistrital.avanzada.tallerTres.control;
 
-import com.uDistrital.avanzada.tallerTres.vista.VentanaPrincipal;
 
 /**
  * Lanza el programa
