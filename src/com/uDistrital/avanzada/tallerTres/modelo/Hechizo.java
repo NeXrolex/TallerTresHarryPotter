@@ -8,6 +8,7 @@ package com.uDistrital.avanzada.tallerTres.modelo;
  * Representacion de un hechizo en el sistema
  *
  * @author Alex
+ * @version 1.0
  */
 public class Hechizo {
     

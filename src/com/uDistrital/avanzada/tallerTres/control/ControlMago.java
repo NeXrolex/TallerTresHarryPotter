@@ -5,13 +5,22 @@
 package com.uDistrital.avanzada.tallerTres.control;
 
 /**
+ * Maneja el control de los magos y ayuda al proceso de hilos 
+ * para la concurrencia
  *
  * @author Alex
+ * @version 1.0
  */
-public class ControlMago {
+public class ControlMago extends Thread {
     
     private ControlGeneral cGeneral;
-
+    
+    /**
+     * Recibe la inyeccion del control General para respetar el 
+     * bajo acoplamiento
+     * 
+     * @param cGeneral Control General
+     */
     public ControlMago(ControlGeneral cGeneral) {
         this.cGeneral = cGeneral;
     }

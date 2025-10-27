@@ -1,8 +1,11 @@
 package com.uDistrital.avanzada.tallerTres.control;
 
 /**
+ * Maneja todo el flujo de la informacion entres los controles y
+ * orquesta la comunicacion entre ellos
  *
- * @author Gezz
+ * @author Gezz, Alex
+ * @version 1.0
  */
 public class ControlGeneral {
 

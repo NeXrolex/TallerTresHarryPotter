@@ -9,11 +9,17 @@ package com.uDistrital.avanzada.tallerTres.control;
  * y aclara toda la logica del mismo
  *
  * @author Alex
+ * @version 1.0
  */
 public class ControlProperties {
     
     private ControlGeneral cGeneral;
-
+    
+    /**
+     * recibe la inyeccion del control General
+     * 
+     * @param cGeneral Control General
+     */
     public ControlProperties(ControlGeneral cGeneral) {
         this.cGeneral = cGeneral;
     }

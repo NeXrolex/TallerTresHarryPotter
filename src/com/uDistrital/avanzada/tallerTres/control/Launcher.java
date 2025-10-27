@@ -9,6 +9,7 @@ package com.uDistrital.avanzada.tallerTres.control;
  * Lanza el programa
  *
  * @author Alex
+ * @version 1.0
  */
 public class Launcher {
 

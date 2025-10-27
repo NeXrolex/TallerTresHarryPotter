@@ -8,6 +8,7 @@ package com.uDistrital.avanzada.tallerTres.modelo;
  * Hereda de persona y repressenta un mago
  *
  * @author Alex
+ * @version 1.0
  */
 public class Mago extends Persona {
     
