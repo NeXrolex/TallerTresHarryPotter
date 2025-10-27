@@ -4,12 +4,12 @@
  */
 package com.uDistrital.avanzada.tallerTres.control;
 
-import com.uDistrital.avanzada.tallerTres.vista.VentanaPrincipal;
 
 /**
  * Lanza el programa
  *
  * @author Alex
+ * @version 1.0
  */
 public class Launcher {
 
