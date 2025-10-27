@@ -25,22 +25,21 @@ import javax.swing.JTextArea;
  *
  * @author Alex
  */
+public class VentanaPrincipal extends JFrame {
 
-public class VentanaPrincipal{
-    
     JFrame ventana = new JFrame();
-    public JButton btnCargarPropsMagos= new JButton("Cargar Magos (.properties)");
-    public JButton btnCargarPropsHechizos= new JButton("Cargar Hechizos (.properties)");
+    public JButton btnCargarPropsMagos = new JButton("Cargar Magos (.properties)");
+    public JButton btnCargarPropsHechizos = new JButton("Cargar Hechizos (.properties)");
     public JButton btnIniciar = new JButton("Iniciar Partida");
     public JButton btnSalir = new JButton("Salir");
-   
+
     private GridBagConstraints gbcProp, gbcBatalla, gbcBotones, gbcVentana;
     private JPanel pnlProp, pnlBatalla, pnlBotones;
     private JPanel pnlJuego = new JPanel();
-    
-    public VentanaPrincipal(){
-        
-        ventana.setTitle("Argolla Llanera – Taller 2");
+
+    public VentanaPrincipal() {
+
+        ventana.setTitle("Pelea de magos - taller3");
         ventana.setSize(600, 400);
         ventana.setResizable(false);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,7 +68,7 @@ public class VentanaPrincipal{
         gbcBatalla.gridx = 1;
         gbcBatalla.gridy = 0;
         pnlBatalla.add(new JLabel("Equipo B:"), gbcBatalla);
-        
+
         pnlBotones = new JPanel(new GridBagLayout());
         gbcBotones = new GridBagConstraints();
         gbcBotones.insets = new Insets(5, 5, 5, 5);
@@ -93,9 +92,41 @@ public class VentanaPrincipal{
         gbcVentana.gridx = 0;
         gbcVentana.gridy = 2;
         ventana.add(pnlBotones, gbcVentana);
-        
+
         ventana.setLocationRelativeTo(null);
         ventana.setVisible(true);
     }
+
+    /**
+     * Para cumplir con el Open/Close usamos un JFileChooser para tener la ruta
+     * donde recide el archivo de propiedades
+     *
+     * @return archivo
+     */
+    public File SolicitarArchivoPropiedades() {
+
+        JFileChooser chooser = new JFileChooser(System.getProperty("user.home"));
+        chooser.setDialogTitle("Seleccione archivo de configuración (.properties)");
+        chooser.setAcceptAllFileFilterUsed(false);
+        int result = chooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            return chooser.getSelectedFile();
+        }
+        return null;
+    }
+
+    /**
+     * Metodo encargado de mostrar mensaje empleando JOptionPane (Profe ya
+     * entendí que solo es para mensajes pequenos)
+     *
+     * @param mensaje Mensaje a mostrar
+     */
+    public void mostrarMensaje(String mensaje) {
+
+        JOptionPane.showMessageDialog(null, mensaje);
+
+    }
+    
+    
 
 }
