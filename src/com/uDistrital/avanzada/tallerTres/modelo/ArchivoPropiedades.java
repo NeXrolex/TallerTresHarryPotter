@@ -19,6 +19,13 @@ import java.util.Properties;
 public class ArchivoPropiedades {
 
     private File archivo;
+    
+    /**
+     * Constructor vacio
+     * 
+     */
+    public ArchivoPropiedades() {
+    }
 
     /**
      * Constructor que asocia el archivo
@@ -30,6 +37,7 @@ public class ArchivoPropiedades {
         this.archivo = archivo;
 
     }
+    
 
     /**
      * Carga y abre el archivo de propiedades
