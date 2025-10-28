@@ -59,7 +59,7 @@ public class VentanaPrincipal extends JFrame {
     }
 
     /**
-     * Metodo encargado de inicializar todos los elementos de la interfaz
+     * Metodo encargado de  inicializar todos los elementos de la interfaz
      * 
      * @param listener Listener para eventos
      */
@@ -170,7 +170,7 @@ public class VentanaPrincipal extends JFrame {
     }
 
     /**
-     * metodo para agregar texto en el area de texto
+     * Metodo para agregar texto en el area de texto
      * 
      * @param texto Texto a agregar
      */
@@ -180,7 +180,7 @@ public class VentanaPrincipal extends JFrame {
     }
 
     /**
-     * metodo para limpiar texto
+     * Metodo para limpiar texto
      */
     public void limpiarTexto() {
         areaTexto.setText("");
