@@ -42,9 +42,13 @@ public class ControlProperties {
     
     public ArrayList<Mago> listarMagos(){
         
+        return null;
+        
     }
     
     public ArrayList<Hechizo> listarHechizos(){
+        
+        return null;
         
     }
     
