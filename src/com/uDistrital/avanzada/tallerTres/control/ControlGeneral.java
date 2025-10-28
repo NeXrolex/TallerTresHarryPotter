@@ -30,13 +30,19 @@ public class ControlGeneral {
         this.cHechizos = new ControlHechizos(this);
 
     }
-
-    public Properties cargarProperties(File archivo) {
+    
+    /**
+     * Flujo de la informacion para cargar los properties usando 
+     * el JFileChooser
+     * 
+     * @param archivo Archivo dse propiedades
+     */
+    public void cargarProperties(File archivo) {
         try {
-            return cProps.cargarDesde(archivo);
+            cProps.cargarDesde(archivo);
         } catch (Exception ex) {
 
         }
-        return null;
+       
     }
 }

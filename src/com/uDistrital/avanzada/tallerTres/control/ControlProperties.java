@@ -4,6 +4,7 @@
  */
 package com.uDistrital.avanzada.tallerTres.control;
 
+import com.uDistrital.avanzada.tallerTres.modelo.ArchivoPropiedades;
 import com.uDistrital.avanzada.tallerTres.modelo.Hechizo;
 import com.uDistrital.avanzada.tallerTres.modelo.Mago;
 import java.io.File;
@@ -36,11 +37,21 @@ public class ControlProperties {
         
     }
     
-    public Properties cargarDesde(File archivo) throws IOException {
-        return new Properties(); 
-    }
-    
-    public ArrayList<Mago> listarMagos(){
+    /**
+     * Delega la apertura del archivo de propiedades gracias al JFileChooser
+     * 
+     * @param archivo Archivo
+     * @throws IOException Error de lectura
+     */
+    public void cargarDesde(File archivo) throws IOException {
+        if (archivo == null) {
+            throw new IllegalStateException("No se recibió archivo"
+                    + " para cargar.");
+        }
+        if (!archivo.exists() || !archivo.isFile()) {
+            throw new IllegalStateException("El archivo no existe o no "
+                    + "es válido: " + archivo);
+        }
         
         return null;
         
