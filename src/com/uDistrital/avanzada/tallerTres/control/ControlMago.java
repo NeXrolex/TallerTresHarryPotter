@@ -6,12 +6,13 @@ package com.uDistrital.avanzada.tallerTres.control;
 
 import com.uDistrital.avanzada.tallerTres.modelo.Mago;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Maneja el control de los magos y ayuda al proceso de hilos para la
  * concurrencia
  *
- * @author Alex
+ * @author Alex,Gezz
  * @version 1.0
  */
 public class ControlMago extends Thread {
@@ -21,6 +22,7 @@ public class ControlMago extends Thread {
     private Mago rival;
     private Random random = new Random();
     private Object lock;
+    private ArrayList<Mago> magos;
 
     /**
      * Recibe la inyeccion del control General para respetar el bajo
@@ -30,6 +32,7 @@ public class ControlMago extends Thread {
      */
     public ControlMago(ControlGeneral cGeneral, Object lock) {
         this.cGeneral = cGeneral;
+        this.magos = new ArrayList<>();
         this.lock = lock;
     }
 
@@ -79,14 +82,20 @@ public class ControlMago extends Thread {
      * @param magosDatos Datos de los magos
      * @return Lista de magos
      */
-    public ArrayList<Mago> transformarMagos(ArrayList<String[]> magosDatos) {
-        ArrayList<Mago> magos = new ArrayList<>();
+    public void transformarMagos(ArrayList<String[]> magosDatos) {
+        this.magos.clear();  // Limpiar la lista antes de agregar nuevos magos
         for (String[] datos : magosDatos) {
             String nombre = datos[0];
             String casa = datos[1];
-            magos.add(new Mago(nombre, casa));
+            magos.add(new Mago(nombre, casa));  // Agregar el nuevo Mago
         }
-        return magos;
     }
-    
+    /**
+     * Obtiene la lista de magos
+     * 
+     * @return Lista de magos
+     */
+    public ArrayList<Mago> obtenerMagos() {
+        return this.magos;
+    }
 }
