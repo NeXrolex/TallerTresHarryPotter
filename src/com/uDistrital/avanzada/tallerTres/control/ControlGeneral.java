@@ -43,7 +43,14 @@ public class ControlGeneral {
     public void cargarProperties(File archivo) {
         try {
             cProps.cargarDesde(archivo);
-            ArrayList hechizos = cProps.transformarHechizos();
+            // Extraer datos de Magos
+            ArrayList<String[]> magosDatos = cProps.extraerDatosMagos();
+            ArrayList<Mago> magos = cMago.transformarMagos(magosDatos);
+            
+            // Extraer datos de Hechizos
+            ArrayList<String[]> hechizosDatos = cProps.extraerDatosHechizos();
+            ArrayList<Hechizo> hechizos = cHechizos
+                    .transformarHechizos(hechizosDatos);
             cHechizos.procesarHechizos(hechizos);
         } catch (Exception ex) {
 
@@ -55,7 +62,7 @@ public class ControlGeneral {
     public void iniciarDuelos() {
         try {
             //  Cargar los magos desde el archivo properties
-            List<Mago> magos = cProps.transformarMagos();
+            List<Mago> magos = cMago.transformarMagos();
             if (magos.isEmpty()) {
                 cVista.notificarError("No se encontraron magos en el archivo de propiedades.");
                 return;
