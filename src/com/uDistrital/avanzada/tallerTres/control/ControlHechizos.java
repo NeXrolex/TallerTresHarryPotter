@@ -35,15 +35,13 @@ public class ControlHechizos {
      * @param hechizosDatos Datos de hechizos
      * @return Lista de hechizos
      */
-    public ArrayList<Hechizo> transformarHechizos(ArrayList<String[]> 
-            hechizosDatos) {
-        ArrayList<Hechizo> hechizos = new ArrayList<>();
+    public void transformarHechizos(ArrayList<String[]> hechizosDatos) {
+        this.hechizosDisponibles.clear();  // Limpiar la lista antes de agregar nuevos hechizos
         for (String[] datos : hechizosDatos) {
             String nombre = datos[0];
             int cantidad = Integer.parseInt(datos[1]);
-            hechizos.add(new Hechizo(nombre, cantidad));
+            hechizosDisponibles.add(new Hechizo(nombre, cantidad));  // Agregar el nuevo Hechizo
         }
-        return hechizos;
     }
 
     /**
@@ -53,6 +51,15 @@ public class ControlHechizos {
      */
     public void procesarHechizos(ArrayList<Hechizo> hechizos) {
         this.hechizosDisponibles = new ArrayList<>(hechizos);
+    }
+    
+    /**
+     * Obtiene la lista de hechizos disponibles
+     * 
+     * @return Lista de hechizos Disponibles
+     */
+    public ArrayList<Hechizo> obtenerHechizos() {
+        return (ArrayList<Hechizo>) this.hechizosDisponibles;
     }
 
     /**
