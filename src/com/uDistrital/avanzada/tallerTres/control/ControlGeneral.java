@@ -1,8 +1,9 @@
 package com.uDistrital.avanzada.tallerTres.control;
 
+import com.uDistrital.avanzada.tallerTres.modelo.Mago;
 import java.io.File;
-import java.io.IOException;
-import java.util.Properties;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Maneja todo el flujo de la informacion entres los controles y orquesta la
@@ -17,6 +18,7 @@ public class ControlGeneral {
     private ControlProperties cProps;
     private ControlHechizos cHechizos;
     private ControlMago cMago;
+    private List<Mago> listaMagos;
 
     /**
      * Constructor encargado de intanciar los controles Se inyecctas a ellos
@@ -28,6 +30,7 @@ public class ControlGeneral {
         this.cProps = new ControlProperties(this);
         this.cMago = new ControlMago(this);
         this.cHechizos = new ControlHechizos(this);
+        this.listaMagos = new ArrayList<>();
 
     }
     
@@ -40,9 +43,12 @@ public class ControlGeneral {
     public void cargarProperties(File archivo) {
         try {
             cProps.cargarDesde(archivo);
+            ArrayList hechizos = cProps.transformarHechizos();
+            cHechizos.procesarHechizos(hechizos);
         } catch (Exception ex) {
 
         }
        
     }
+    
 }

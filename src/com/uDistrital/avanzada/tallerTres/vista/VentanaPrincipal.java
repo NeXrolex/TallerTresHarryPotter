@@ -99,7 +99,7 @@ public class VentanaPrincipal extends JFrame {
         panelBotones.setBackground(new Color(220, 220, 220));
         panelBotones.setPreferredSize(new Dimension(900, 80));
 
-        btnCargar = crearBoton("Cargar Magos", "CARGAR", new Color(34, 139, 34));
+        btnCargar = crearBoton("Cargar Properties", "CARGAR", new Color(34, 139, 34));
         btnIniciar = crearBoton("Iniciar Duelos", "INICIAR", new Color(178, 34, 34));
         btnLimpiar = crearBoton(" Limpiar", "LIMPIAR", new Color(70, 130, 180));
 
