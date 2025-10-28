@@ -5,7 +5,7 @@
 package com.uDistrital.avanzada.tallerTres.control;
 
 import com.uDistrital.avanzada.tallerTres.modelo.Mago;
-import java.util.Random;
+import java.util.ArrayList;
 
 /**
  * Maneja el control de los magos y ayuda al proceso de hilos para la
@@ -72,4 +72,21 @@ public class ControlMago extends Thread {
             lock.notifyAll(); // Asegura que el otro hilo no quede bloqueado
         }
     }
+    
+    /**
+     * Trasnforma los datos en una lista de objetos de tipo mago
+     * 
+     * @param magosDatos Datos de los magos
+     * @return Lista de magos
+     */
+    public ArrayList<Mago> transformarMagos(ArrayList<String[]> magosDatos) {
+        ArrayList<Mago> magos = new ArrayList<>();
+        for (String[] datos : magosDatos) {
+            String nombre = datos[0];
+            String casa = datos[1];
+            magos.add(new Mago(nombre, casa));
+        }
+        return magos;
+    }
+    
 }

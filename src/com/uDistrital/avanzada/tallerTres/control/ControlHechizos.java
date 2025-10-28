@@ -10,27 +10,45 @@ import java.util.List;
 
 /**
  * Clase encargada de manejar los procesos de los hechizos
- * 
+ *
  * @author Alex,Jard,Stiven
  */
 public class ControlHechizos {
+
     private ControlGeneral cGeneral;
     private List<Hechizo> hechizosDisponibles;
 
     /**
-     * Recibe la inyeccion del control general para respetar
-     * el bajo acoplamiento
-     * 
+     * Recibe la inyeccion del control general para respetar el bajo
+     * acoplamiento
+     *
      * @param cGeneral Control General
      */
     public ControlHechizos(ControlGeneral cGeneral) {
         this.cGeneral = cGeneral;
         this.hechizosDisponibles = new ArrayList<>();
     }
+    
+    /**
+     * Transforma la lista de hechizos para que sean de tipo
+     * lista de objetos 
+     * @param hechizosDatos Datos de hechizos
+     * @return Lista de hechizos
+     */
+    public ArrayList<Hechizo> transformarHechizos(ArrayList<String[]> 
+            hechizosDatos) {
+        ArrayList<Hechizo> hechizos = new ArrayList<>();
+        for (String[] datos : hechizosDatos) {
+            String nombre = datos[0];
+            int cantidad = Integer.parseInt(datos[1]);
+            hechizos.add(new Hechizo(nombre, cantidad));
+        }
+        return hechizos;
+    }
 
     /**
      * Procesa los hechizos desde la lista transformada
-     * 
+     *
      * @param Lista de hechizos
      */
     public void procesarHechizos(ArrayList<Hechizo> hechizos) {
@@ -39,7 +57,7 @@ public class ControlHechizos {
 
     /**
      * Metodo encargado de obtener la lista de hechizos disponibles
-     * 
+     *
      * @return Lista de hechizos
      */
     public List<Hechizo> obtenerListaHechizos() {
@@ -47,8 +65,8 @@ public class ControlHechizos {
     }
 
     /**
-     * Metodo encargado de generar un hechizo aleatorio 
-     * 
+     * Metodo encargado de generar un hechizo aleatorio
+     *
      * @return Hechizo aleatorio
      */
     public Hechizo obtenerHechizoAleatorio() {
