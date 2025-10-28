@@ -29,7 +29,6 @@ public class ControlGeneral {
     public ControlGeneral() {
         this.cVista = new ControlVista(this);
         this.cProps = new ControlProperties(this);
-        this.cMago = new ControlMago(this);
         this.cHechizos = new ControlHechizos(this);
         this.listaMagos = new ArrayList<>();
 
@@ -74,10 +73,9 @@ public class ControlGeneral {
             // Iniciar la vista de duelos
             cVista.iniciarModoVisualizacionDuelos();
 
-            // Simular duelos progresivos (el ganador sigue al siguiente)
             int numeroDuelo = 1;
 
-            // El primer mago será el "retador inicial"
+            // El mago que gane los duelos será el retador
             Mago ganadorActual = listaMagos.get(0);
 
             for (int i = 1; i < listaMagos.size(); i++) {
@@ -85,6 +83,28 @@ public class ControlGeneral {
 
                 // Notificar inicio del duelo
                 cVista.notificarInicioDuelo(numeroDuelo, ganadorActual, retador);
+
+                ganadorActual.resetPuntaje();
+                retador.resetPuntaje();
+
+                Object lock = new Object();
+
+                ControlMago hilo1 = new ControlMago(this, lock);
+                ControlMago hilo2 = new ControlMago(this, lock);
+
+                hilo1.setMagos(ganadorActual, retador);
+                hilo2.setMagos(retador, ganadorActual);
+
+                hilo1.start();
+                hilo2.start();
+
+                // Esperar a que ambos terminen
+                hilo1.join();
+                hilo2.join();
+
+                while (ganadorActual.getPuntaje() < 250 && retador.getPuntaje() < 250) {
+                    Thread.sleep(100);
+                }
 
                 // Ganador
                 ganadorActual = (ganadorActual.getPuntaje() >= retador.getPuntaje())
