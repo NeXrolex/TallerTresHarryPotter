@@ -178,7 +178,7 @@ public class ControlVista implements ActionListener {
                 solicitarCargarArchivo();
                 break;
             case "INICIAR":
-                //controlGeneral.iniciarDuelos();
+                controlGeneral.iniciarDuelos();
                 break;
             case "LIMPIAR":
                 limpiarConsola();

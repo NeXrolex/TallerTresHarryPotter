@@ -1,5 +1,6 @@
 package com.uDistrital.avanzada.tallerTres.control;
 
+import com.uDistrital.avanzada.tallerTres.modelo.Hechizo;
 import com.uDistrital.avanzada.tallerTres.modelo.Mago;
 import java.io.File;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class ControlGeneral {
     private List<Mago> listaMagos;
 
     /**
-     * Constructor encargado de intanciar los controles Se inyecctas a ellos
+     * Constructor encargado de instanciar los controles Se inyecetas a ellos
      * para cumplir con el bajo acoplamiento
      *
      */
@@ -33,11 +34,10 @@ public class ControlGeneral {
         this.listaMagos = new ArrayList<>();
 
     }
-    
+
     /**
-     * Flujo de la informacion para cargar los properties usando 
-     * el JFileChooser
-     * 
+     * Flujo de la informacion para cargar los properties usando el JFileChooser
+     *
      * @param archivo Archivo dse propiedades
      */
     public void cargarProperties(File archivo) {
@@ -48,7 +48,52 @@ public class ControlGeneral {
         } catch (Exception ex) {
 
         }
-       
+
     }
-    
+
+    // Inicia los duelos mágicos y los muestra en la vista.
+    public void iniciarDuelos() {
+        try {
+            //  Cargar los magos desde el archivo properties
+            List<Mago> magos = cProps.transformarMagos();
+            if (magos.isEmpty()) {
+                cVista.notificarError("No se encontraron magos en el archivo de propiedades.");
+                return;
+            }
+
+            this.listaMagos = magos;
+            cVista.notificarCargaExitosa(listaMagos);
+
+            // Iniciar la vista de duelos
+            cVista.iniciarModoVisualizacionDuelos();
+
+            // Simular duelos progresivos (el ganador sigue al siguiente)
+            int numeroDuelo = 1;
+
+            // El primer mago será el "retador inicial"
+            Mago ganadorActual = listaMagos.get(0);
+
+            for (int i = 1; i < listaMagos.size(); i++) {
+                Mago retador = listaMagos.get(i);
+
+                // Notificar inicio del duelo
+                cVista.notificarInicioDuelo(numeroDuelo, ganadorActual, retador);
+
+                // Ganador
+                ganadorActual = (ganadorActual.getPuntaje() >= retador.getPuntaje())
+                        ? ganadorActual
+                        : retador;
+
+                // Notificar resultado del duelo
+                cVista.notificarResultadoDuelo(ganadorActual);
+
+                numeroDuelo++;
+            }
+
+            cVista.notificarCampeonFinal(ganadorActual);
+
+        } catch (Exception ex) {
+            cVista.notificarError("Error al iniciar los duelos: " + ex.getMessage());
+        }
+    }
 }
