@@ -5,8 +5,6 @@
 package com.uDistrital.avanzada.tallerTres.control;
 
 import com.uDistrital.avanzada.tallerTres.modelo.ArchivoPropiedades;
-import com.uDistrital.avanzada.tallerTres.modelo.Hechizo;
-import com.uDistrital.avanzada.tallerTres.modelo.Mago;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
