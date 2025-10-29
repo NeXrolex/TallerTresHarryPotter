@@ -59,98 +59,88 @@ public class ControlProperties {
         this.origenActual = archivo;
 
     }
-    /**
-     *  Saca los elementos del archivo y los convierte en un arreglo
-     * 
-     * @return Lista de magos
-     * @throws IOException Error de lectura
+     /**
+     * Extrae los datos de los magos del archivo y los devuelve como 
+     * un listado de datos.
+     * Cada Mago tiene: nombre, casa.
+     * @return Lista de magos con sus datos.
+     * @throws IOException si hay un error de lectura del archivo.
      */
-    public ArrayList<Mago> transformarMagos() throws IOException {
+    public ArrayList<String[]> extraerDatosMagos() throws IOException {
         if (this.origenActual == null) {
-            throw new IllegalStateException();
+            throw new IllegalStateException("No hay archivo asociado. "
+                    + "Use cargarDesde(File) primero.");
         }
 
-        // Abrir properties en el momento
+        // Abrir archivo .properties
         Properties props = new ArchivoPropiedades(this.origenActual).abrir();
 
-        ArrayList<Mago> lista = new ArrayList<>();
+        ArrayList<String[]> magosDatos = new ArrayList<>();
 
         for (String key : props.stringPropertyNames()) {
-            
             if (!key.startsWith("mago.") || !key.endsWith(".nombre")) {
                 continue;
             }
 
-            
-            String id = key.substring("mago.".length(), key.length()
-                    - ".nombre".length()).trim();
+            // Extraer ID de mago
+            String id = key.substring("mago.".length(), key.length() - 
+                    ".nombre".length()).trim();
             if (id.isEmpty()) {
                 continue;
             }
 
             String nombre = props.getProperty("mago." + id + ".nombre", "")
                     .trim();
-            if (nombre.isEmpty()) {
-                continue; // mínimo: sin nombre no se crea
-            }
             String casa = props.getProperty("mago." + id + ".casa", "").trim();
 
-            lista.add(new Mago(nombre, casa));
+            if (!nombre.isEmpty()) {
+                // Guardar los datos como un arreglo [nombre, casa]
+                magosDatos.add(new String[]{nombre, casa});
+            }
         }
-
-        return lista;
+        return magosDatos;
     }
-    
+
     /**
-     * Convierte el contenido de los properties en elementos que podamos
-     * trabajar(Opera properties para trabajar mas cristiano)
-     * 
-     * @return Lista de Hechizos
-     * @throws IOException Error de lectura 
+     * Extrae los datos de los hechizos del archivo y los devuelve como 
+     * un listado de datos.
+     * Cada Hechizo tiene: nombre, cantidad.
+     * @return Lista de hechizos con sus datos.
+     * @throws IOException si hay un error de lectura del archivo.
      */
-    public ArrayList<Hechizo> transformarHechizos() throws IOException {
+    public ArrayList<String[]> extraerDatosHechizos() throws IOException {
         if (this.origenActual == null) {
-            throw new IllegalStateException();
+            throw new IllegalStateException("No hay archivo asociado."
+                    + " Use cargarDesde(File) primero.");
         }
 
-        // Abrir properties en el momento
+        // Abrir archivo .properties
         Properties props = new ArchivoPropiedades(this.origenActual).abrir();
 
-        ArrayList<Hechizo> lista = new ArrayList<>();
+        ArrayList<String[]> hechizosDatos = new ArrayList<>();
 
         for (String key : props.stringPropertyNames()) {
-            
             if (!key.startsWith("hechizo.") || !key.endsWith(".nombre")) {
                 continue;
             }
 
-            
-            String id = key.substring("hechizo.".length(), key.length()
-                    - ".nombre".length()).trim();
+            // Extraer ID de hechizo
+            String id = key.substring("hechizo.".length(), key.length() -
+                    ".nombre".length()).trim();
             if (id.isEmpty()) {
                 continue;
             }
 
             String nombre = props.getProperty("hechizo." + id + ".nombre", "")
                     .trim();
-            if (nombre.isEmpty()) {
-                continue;
-            }
+            String cantidadStr = props.getProperty("hechizo." + id 
+                    + ".cantidad", "0").trim();
 
-            String cantStr = props.getProperty("hechizo." + id +
-                    ".cantidad", "0").trim();
-            int cantidad;
-            try {
-                int v = Integer.parseInt(cantStr);
-                cantidad = (v < 0) ? 0 : v;
-            } catch (Exception e) {
-                cantidad = 0;
+            if (!nombre.isEmpty()) {
+                hechizosDatos.add(new String[]{nombre, cantidadStr});
             }
-
-            lista.add(new Hechizo(nombre, cantidad));
         }
-
-        return lista;
+        return hechizosDatos;
     }
     
 }
