@@ -11,9 +11,16 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 /**
+<<<<<<< HEAD
  * Ventana principal de la aplicación Se encarga de mostrar todos los datos a
  * pedir y mostrar los resultados de los duelos magicos
  *
+=======
+ * Ventana principal de la aplicación
+ * Se encarga de mostrar todos los datos a pedir y mostrar los 
+ * resultados de los duelos magicos
+ * 
+>>>>>>> 05c2e7188676fa14702ac239c553146cbfb4096d
  * @author Alex,Jard,Stiven
  */
 public class VentanaPrincipal extends JFrame {
@@ -57,7 +64,8 @@ public class VentanaPrincipal extends JFrame {
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "Archivos Properties (*.properties)", "properties");
         fileChooser.setFileFilter(filter);
-        fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
+        fileChooser.setCurrentDirectory(new File
+        (System.getProperty("user.dir")));
     }
 
     /**
@@ -120,9 +128,12 @@ public class VentanaPrincipal extends JFrame {
         panelBotones.setBackground(new Color(220, 220, 220));
         panelBotones.setPreferredSize(new Dimension(900, 80));
 
-        btnCargar = crearBoton("Cargar Properties", "CARGAR", new Color(34, 139, 34));
-        btnIniciar = crearBoton("Iniciar Duelos", "INICIAR", new Color(178, 34, 34));
-        btnLimpiar = crearBoton(" Limpiar", "LIMPIAR", new Color(70, 130, 180));
+        btnCargar = crearBoton("Cargar Properties", "CARGAR",
+                new Color(34, 139, 34));
+        btnIniciar = crearBoton("Iniciar Duelos", "INICIAR",
+                new Color(178, 34, 34));
+        btnLimpiar = crearBoton(" Limpiar", "LIMPIAR",
+                new Color(70, 130, 180));
 
         btnCargar.addActionListener(listener);
         btnIniciar.addActionListener(listener);
@@ -136,9 +147,15 @@ public class VentanaPrincipal extends JFrame {
     }
 
     /**
+<<<<<<< HEAD
      * Metodo encargado de configurar la creacion de botones de manera
      * persanilzada
      *
+=======
+     * Metodo encargado de configurar la creacion de botones de 
+     * manera persanilzada
+     * 
+>>>>>>> 05c2e7188676fa14702ac239c553146cbfb4096d
      * @param texto Texto del botón
      * @param comando Comando de acción
      * @param color Color de fondo
