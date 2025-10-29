@@ -11,19 +11,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.List;
+import javax.swing.SwingUtilities;
 
 /**
  * Clase encargada de el control para la logica de la vista
- * 
+ *
  * @author Alex,Jard,Stiven
  */
 public class ControlVista implements ActionListener {
+
     private VentanaPrincipal vista;
     private ControlGeneral controlGeneral;
 
     /**
      * Constructor que recibe el control general
-     * 
+     *
      * @param general Control General
      */
     public ControlVista(ControlGeneral general) {
@@ -36,7 +38,7 @@ public class ControlVista implements ActionListener {
      */
     public void solicitarCargarArchivo() {
         File archivo = vista.solicitarArchivoPropiedades();
-        
+
         if (archivo == null) {
             vista.mostrarMensaje("Selección cancelada");
             return;
@@ -47,7 +49,7 @@ public class ControlVista implements ActionListener {
 
     /**
      * Notifica el exito o no de la carga de los magos
-     * 
+     *
      * @param magos Lista de magos cargados
      */
     public void notificarCargaExitosa(List<Mago> magos) {
@@ -57,7 +59,7 @@ public class ControlVista implements ActionListener {
 
     /**
      * Mensaje de error a la vista
-     * 
+     *
      * @param mensaje Mensaje de error
      */
     public void notificarError(String mensaje) {
@@ -66,7 +68,7 @@ public class ControlVista implements ActionListener {
 
     /**
      * Metodo para escribir texto en la vista
-     * 
+     *
      * @param texto Texto a escribir
      */
     public void escribirEnConsola(String texto) {
@@ -82,19 +84,19 @@ public class ControlVista implements ActionListener {
 
     /**
      * Muestra los magos de la vista
-     * 
+     *
      * @param magos Lista de magos
      */
     public void mostrarMagosEnVista(List<Mago> magos) {
         limpiarConsola();
         escribirEnConsola("       MAGOS CARGADOS           \n");
-        
+
         for (int i = 0; i < magos.size(); i++) {
             Mago mago = magos.get(i);
-            escribirEnConsola((i + 1) + ". " + mago.getNombre() + 
-                " - Casa: " + mago.getCasa() + "\n");
+            escribirEnConsola((i + 1) + ". " + mago.getNombre()
+                    + " - Casa: " + mago.getCasa() + "\n");
         }
-        
+
         escribirEnConsola("\n");
     }
 
@@ -109,14 +111,34 @@ public class ControlVista implements ActionListener {
     }
 
     /**
+     * Notifica el lanzamiento de un hechizo simulado (sin objeto Hechizo real)
+     *
+     * @param mago Mago que lanza el hechizo
+     * @param nombreHechizo Nombre del hechizo
+     * @param puntosHechizo Puntos obtenidos
+     */
+    public void notificarLanzamientoSimulado(Mago mago, String nombreHechizo, int puntosHechizo) {
+        SwingUtilities.invokeLater(() -> {
+            String mensaje = String.format(
+                    " %s lanza %s (+%d pts) | Total: %d\n",
+                    mago.getNombre(),
+                    nombreHechizo,
+                    puntosHechizo,
+                    mago.getPuntaje()
+            );
+            vista.agregarTexto(mensaje);
+        });
+    }
+
+    /**
      * Metodo para notificar el inicio de un duelo
-     * 
+     *
      * @param numeroDuelo Número del duelo
      * @param mago1 Primer mago
      * @param mago2 Segundo mago
      */
     public void notificarInicioDuelo(int numeroDuelo, Mago mago1, Mago mago2) {
-        escribirEnConsola("│         DUELO #" + numeroDuelo + "             \n");
+        escribirEnConsola("\n│         DUELO #" + numeroDuelo + "             \n");
 
         escribirEnConsola(mago1.getNombre() + " (" + mago1.getCasa() + ")");
         escribirEnConsola(" VS ");
@@ -125,26 +147,26 @@ public class ControlVista implements ActionListener {
 
     /**
      * Notifica el lanzamiento de un hechizo
-     * 
+     *
      * @param mago Mago que lanza
      * @param hechizo Hechizo lanzado
      */
     public void notificarLanzamientoHechizo(Mago mago, Hechizo hechizo) {
-        String mensaje = "⚡ " + mago.getNombre() + " lanza " + 
-            hechizo.getNomHechizo() + " (" + 
-            hechizo.getPuntajeHechizo() + " pts) | Total: " + 
-            mago.getPuntaje() + "\n";
+        String mensaje = "" + mago.getNombre() + " lanza "
+                + hechizo.getNomHechizo() + " ("
+                + hechizo.getPuntajeHechizo() + " pts) | Total: "
+                + mago.getPuntaje() + "\n";
         escribirEnConsola(mensaje);
     }
 
     /**
      * Notifica el resultado de un duelo
-     * 
+     *
      * @param ganador Mago ganador
      */
     public void notificarResultadoDuelo(Mago ganador) {
-        escribirEnConsola("│     GANADOR DEL DUELO            │\n");
-        
+        escribirEnConsola("\n│     GANADOR DEL DUELO            │\n");
+
         escribirEnConsola(ganador.getNombre() + "\n");
         escribirEnConsola("Casa: " + ganador.getCasa() + "\n");
         escribirEnConsola("Puntaje: " + ganador.getPuntaje() + "\n");
@@ -154,12 +176,12 @@ public class ControlVista implements ActionListener {
 
     /**
      * Notifica el ganador de un duelo
-     * 
+     *
      * @param campeon Mago ganador
      */
     public void notificarCampeonFinal(Mago campeon) {
 
-        escribirEnConsola("  CAMPEÓN FINAL DEL TORNEO       \n");
+        escribirEnConsola("\n CAMPEÓN FINAL DEL TORNEO       \n");
 
         escribirEnConsola("Nombre: " + campeon.getNombre() + "\n");
         escribirEnConsola("Casa: " + campeon.getCasa() + "\n");
@@ -172,13 +194,13 @@ public class ControlVista implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String comando = e.getActionCommand();
-        
+
         switch (comando) {
             case "CARGAR":
                 solicitarCargarArchivo();
                 break;
             case "INICIAR":
-                controlGeneral.iniciarDuelos();
+                new Thread(() -> controlGeneral.iniciarDuelos()).start();
                 break;
             case "LIMPIAR":
                 limpiarConsola();

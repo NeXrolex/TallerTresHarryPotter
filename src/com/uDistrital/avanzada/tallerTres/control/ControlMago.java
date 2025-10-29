@@ -57,7 +57,9 @@ public class ControlMago extends Thread {
                     int puntosHechizo = random.nextInt(21) + 5;
                     mago.setPuntaje(mago.getPuntaje() + puntosHechizo);
                     mago.setCantidadHechizos(mago.getCantidadHechizos() + 1);
-
+                   
+                    cGeneral.notificarLanzamientoHechizo(mago, puntosHechizo);
+                    
                     // Simular que el rival queda aturdido
                     rival.setEstado(true);
 
@@ -75,10 +77,10 @@ public class ControlMago extends Thread {
             lock.notifyAll(); // Asegura que el otro hilo no quede bloqueado
         }
     }
-    
+
     /**
      * Trasnforma los datos en una lista de objetos de tipo mago
-     * 
+     *
      * @param magosDatos Datos de los magos
      * @return Lista de magos
      */
@@ -90,9 +92,10 @@ public class ControlMago extends Thread {
             magos.add(new Mago(nombre, casa));  // Agregar el nuevo Mago
         }
     }
+
     /**
      * Obtiene la lista de magos
-     * 
+     *
      * @return Lista de magos
      */
     public ArrayList<Mago> obtenerMagos() {

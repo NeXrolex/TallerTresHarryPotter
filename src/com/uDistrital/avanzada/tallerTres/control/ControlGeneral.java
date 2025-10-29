@@ -57,6 +57,10 @@ public class ControlGeneral {
 
     }
 
+    public void notificarLanzamientoHechizo(Mago mago, int puntos) {
+        cVista.notificarLanzamientoSimulado(mago, "Hechizo Aleatorio", puntos);
+    }
+
     // Inicia los duelos mágicos y los muestra en la vista.
     public void iniciarDuelos() {
         try {
@@ -82,6 +86,7 @@ public class ControlGeneral {
                 Mago retador = listaMagos.get(i);
 
                 // Notificar inicio del duelo
+                Thread.sleep(2000);
                 cVista.notificarInicioDuelo(numeroDuelo, ganadorActual, retador);
 
                 ganadorActual.resetPuntaje();
@@ -110,7 +115,7 @@ public class ControlGeneral {
                 ganadorActual = (ganadorActual.getPuntaje() >= retador.getPuntaje())
                         ? ganadorActual
                         : retador;
-
+                Thread.sleep(1000);
                 // Notificar resultado del duelo
                 cVista.notificarResultadoDuelo(ganadorActual);
 
