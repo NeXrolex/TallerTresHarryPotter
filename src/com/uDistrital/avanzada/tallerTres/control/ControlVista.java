@@ -120,7 +120,7 @@ public class ControlVista implements ActionListener {
     public void notificarLanzamientoSimulado(Mago mago, String nombreHechizo, int puntosHechizo) {
         SwingUtilities.invokeLater(() -> {
             String mensaje = String.format(
-                    "⚡ %s lanza %s (+%d pts) | Total: %d\n",
+                    " %s lanza %s (+%d pts) | Total: %d\n",
                     mago.getNombre(),
                     nombreHechizo,
                     puntosHechizo,
@@ -181,7 +181,7 @@ public class ControlVista implements ActionListener {
      */
     public void notificarCampeonFinal(Mago campeon) {
 
-        escribirEnConsola("  CAMPEÓN FINAL DEL TORNEO       \n");
+        escribirEnConsola("\n CAMPEÓN FINAL DEL TORNEO       \n");
 
         escribirEnConsola("Nombre: " + campeon.getNombre() + "\n");
         escribirEnConsola("Casa: " + campeon.getCasa() + "\n");
