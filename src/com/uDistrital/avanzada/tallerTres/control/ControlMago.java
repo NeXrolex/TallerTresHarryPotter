@@ -36,12 +36,23 @@ public class ControlMago extends Thread {
         this.magos = new ArrayList<>();
         this.lock = lock;
     }
-
+    
+    /**
+     * Asigna magos para una peleo
+     * 
+     * @param mago Mago principal
+     * @param rival Mago Rival
+     */
     public void setMagos(Mago mago, Mago rival) {
         this.mago = mago;
         this.rival = rival;
     }
-
+    
+    /**
+     * Metodo run que nos ayuda a la concurrencia
+     * para desarrollar el programa
+     * 
+     */
     @Override
     public void run() {
         while (mago.getPuntaje() < 250 && rival.getPuntaje() < 250) {
@@ -83,7 +94,6 @@ public class ControlMago extends Thread {
      * Trasnforma los datos en una lista de objetos de tipo mago
      *
      * @param magosDatos Datos de los magos
-     * @return Lista de magos
      */
     public void transformarMagos(ArrayList<String[]> magosDatos) {
         this.magos.clear();  // Limpiar la lista antes de agregar nuevos magos
