@@ -7,6 +7,7 @@ package com.uDistrital.avanzada.tallerTres.control;
 import com.uDistrital.avanzada.tallerTres.modelo.Hechizo;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Clase encargada de manejar los procesos de los hechizos
@@ -36,23 +37,16 @@ public class ControlHechizos {
      * @return Lista de hechizos
      */
     public void transformarHechizos(ArrayList<String[]> hechizosDatos) {
-        this.hechizosDisponibles.clear();  // Limpiar la lista antes de agregar nuevos hechizos
+        this.hechizosDisponibles.clear();  // Limpiar la lista antes de 
+        //agregar nuevos hechizos
         for (String[] datos : hechizosDatos) {
             String nombre = datos[0];
             int cantidad = Integer.parseInt(datos[1]);
-            hechizosDisponibles.add(new Hechizo(nombre, cantidad));  // Agregar el nuevo Hechizo
+            hechizosDisponibles.add(new Hechizo(nombre, cantidad)); 
+            // Agregar el nuevo Hechizo
         }
     }
 
-    /**
-     * Procesa los hechizos desde la lista transformada
-     *
-     * @param Lista de hechizos
-     */
-    public void procesarHechizos(ArrayList<Hechizo> hechizos) {
-        this.hechizosDisponibles = new ArrayList<>(hechizos);
-    }
-    
     /**
      * Obtiene la lista de hechizos disponibles
      * 
@@ -63,24 +57,22 @@ public class ControlHechizos {
     }
 
     /**
-     * Metodo encargado de obtener la lista de hechizos disponibles
-     *
-     * @return Lista de hechizos
-     */
-    public List<Hechizo> obtenerListaHechizos() {
-        return new ArrayList<>(hechizosDisponibles);
-    }
-
-    /**
      * Metodo encargado de generar un hechizo aleatorio
      *
      * @return Hechizo aleatorio
      */
     public Hechizo obtenerHechizoAleatorio() {
+        // Verifica si hay hechizos disponibles
         if (hechizosDisponibles.isEmpty()) {
-            return null;
+            return null;// Retorna null si no hay hechizos disponibles
         }
-        int indice = (int) (Math.random() * hechizosDisponibles.size());
+
+        // Generar un índice aleatorio
+        Random random = new Random();
+        int indice = random.nextInt(hechizosDisponibles.size());
+        // Obtener un índice aleatorio
+
+        // Retornar el hechizo aleatorio
         return hechizosDisponibles.get(indice);
     }
 }

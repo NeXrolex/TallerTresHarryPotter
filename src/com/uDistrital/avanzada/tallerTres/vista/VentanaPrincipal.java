@@ -12,7 +12,8 @@ import java.io.File;
 
 /**
  * Ventana principal de la aplicación
- * Se encarga de mostrar todos los datos a pedir y mostrar los resultados de los duelos magicos
+ * Se encarga de mostrar todos los datos a pedir y mostrar los 
+ * resultados de los duelos magicos
  * 
  * @author Alex,Jard,Stiven
  */
@@ -55,7 +56,8 @@ public class VentanaPrincipal extends JFrame {
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
             "Archivos Properties (*.properties)", "properties");
         fileChooser.setFileFilter(filter);
-        fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
+        fileChooser.setCurrentDirectory(new File
+        (System.getProperty("user.dir")));
     }
 
     /**
@@ -99,9 +101,12 @@ public class VentanaPrincipal extends JFrame {
         panelBotones.setBackground(new Color(220, 220, 220));
         panelBotones.setPreferredSize(new Dimension(900, 80));
 
-        btnCargar = crearBoton("Cargar Properties", "CARGAR", new Color(34, 139, 34));
-        btnIniciar = crearBoton("Iniciar Duelos", "INICIAR", new Color(178, 34, 34));
-        btnLimpiar = crearBoton(" Limpiar", "LIMPIAR", new Color(70, 130, 180));
+        btnCargar = crearBoton("Cargar Properties", "CARGAR",
+                new Color(34, 139, 34));
+        btnIniciar = crearBoton("Iniciar Duelos", "INICIAR",
+                new Color(178, 34, 34));
+        btnLimpiar = crearBoton(" Limpiar", "LIMPIAR",
+                new Color(70, 130, 180));
 
         btnCargar.addActionListener(listener);
         btnIniciar.addActionListener(listener);
@@ -115,7 +120,8 @@ public class VentanaPrincipal extends JFrame {
     }
 
     /**
-     * Metodo encargado de configurar la creacion de botones de manera persanilzada
+     * Metodo encargado de configurar la creacion de botones de 
+     * manera persanilzada
      * 
      * @param texto Texto del botón
      * @param comando Comando de acción
