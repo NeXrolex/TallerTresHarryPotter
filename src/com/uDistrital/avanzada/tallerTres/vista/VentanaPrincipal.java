@@ -11,16 +11,13 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 /**
-<<<<<<< HEAD
  * Ventana principal de la aplicación Se encarga de mostrar todos los datos a
  * pedir y mostrar los resultados de los duelos magicos
  *
-=======
  * Ventana principal de la aplicación
  * Se encarga de mostrar todos los datos a pedir y mostrar los 
  * resultados de los duelos magicos
  * 
->>>>>>> 05c2e7188676fa14702ac239c553146cbfb4096d
  * @author Alex,Jard,Stiven
  */
 public class VentanaPrincipal extends JFrame {
@@ -147,15 +144,12 @@ public class VentanaPrincipal extends JFrame {
     }
 
     /**
-<<<<<<< HEAD
      * Metodo encargado de configurar la creacion de botones de manera
      * persanilzada
      *
-=======
      * Metodo encargado de configurar la creacion de botones de 
      * manera persanilzada
      * 
->>>>>>> 05c2e7188676fa14702ac239c553146cbfb4096d
      * @param texto Texto del botón
      * @param comando Comando de acción
      * @param color Color de fondo
@@ -184,6 +178,7 @@ public class VentanaPrincipal extends JFrame {
         int resultado = fileChooser.showOpenDialog(this);
         if (resultado == JFileChooser.APPROVE_OPTION) {
             return fileChooser.getSelectedFile();
+            
         }
         return null;
     }
