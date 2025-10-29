@@ -1,5 +1,6 @@
 package com.uDistrital.avanzada.tallerTres.control;
 
+import com.uDistrital.avanzada.tallerTres.modelo.Hechizo;
 import com.uDistrital.avanzada.tallerTres.modelo.Mago;
 import java.io.File;
 import java.util.ArrayList;
@@ -57,9 +58,9 @@ public class ControlGeneral {
 
     }
 
-    public void notificarLanzamientoHechizo(Mago mago, int puntos) {
-        cVista.notificarLanzamientoSimulado(mago, "Hechizo Aleatorio", puntos);
-    }
+    public void notificarLanzamientoHechizo(Mago mago, String nombreHechizo, int puntos) {
+    cVista.notificarLanzamientoSimulado(mago, nombreHechizo, puntos);
+}
 
     // Inicia los duelos mágicos y los muestra en la vista.
     public void iniciarDuelos() {
@@ -127,5 +128,9 @@ public class ControlGeneral {
         } catch (Exception ex) {
             cVista.notificarError("Error al iniciar los duelos: " + ex.getMessage());
         }
+    }
+
+    public Hechizo obtenerHechizoAleatorio() {
+        return cHechizos.obtenerHechizoAleatorio();
     }
 }

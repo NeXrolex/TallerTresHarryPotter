@@ -4,6 +4,7 @@
  */
 package com.uDistrital.avanzada.tallerTres.control;
 
+import com.uDistrital.avanzada.tallerTres.modelo.Hechizo;
 import com.uDistrital.avanzada.tallerTres.modelo.Mago;
 import java.util.ArrayList;
 import java.util.Random;
@@ -52,13 +53,13 @@ public class ControlMago extends Thread {
                         mago.setEstado(false);
                         continue;
                     }
-
-                    // Generar hechizo simulado (entre 5 y 25 puntos)
-                    int puntosHechizo = random.nextInt(21) + 5;
+                    Hechizo hechizoLanzado = cGeneral.obtenerHechizoAleatorio();
+                    int puntosHechizo = hechizoLanzado.getPuntajeHechizo();
+                    String nombreHechizo = hechizoLanzado.getNomHechizo();
+                    
                     mago.setPuntaje(mago.getPuntaje() + puntosHechizo);
                     mago.setCantidadHechizos(mago.getCantidadHechizos() + 1);
-                   
-                    cGeneral.notificarLanzamientoHechizo(mago, puntosHechizo);
+                    cGeneral.notificarLanzamientoHechizo(mago, nombreHechizo, puntosHechizo);
                     
                     // Simular que el rival queda aturdido
                     rival.setEstado(true);
