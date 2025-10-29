@@ -10,7 +10,7 @@ import java.util.List;
  * Maneja todo el flujo de la informacion entres los controles y orquesta la
  * comunicacion entre ellos
  *
- * @author Gezz, Alex
+ * @author Gezz,Alex,Jeison
  * @version 1.0
  */
 public class ControlGeneral {
@@ -47,7 +47,14 @@ public class ControlGeneral {
             ArrayList<String[]> magosDatos = cProps.extraerDatosMagos();
             cMago.transformarMagos(magosDatos);  // Los magos son almacenados
             //dentro de ControlMago
-
+            //  Cargar los magos desde el archivo properties
+            List<Mago> magos = cMago.obtenerMagos();
+            if (magos.isEmpty()) {
+                cVista.notificarError("No se encontraron magos en el archivo de propiedades.");
+                return;
+            }
+            this.listaMagos = magos;
+            cVista.notificarCargaExitosa(listaMagos);
             // Extraer datos de Hechizos
             ArrayList<String[]> hechizosDatos = cProps.extraerDatosHechizos();
             cHechizos.transformarHechizos(hechizosDatos);
@@ -59,23 +66,12 @@ public class ControlGeneral {
     }
 
     public void notificarLanzamientoHechizo(Mago mago, String nombreHechizo, int puntos) {
-    cVista.notificarLanzamientoSimulado(mago, nombreHechizo, puntos);
-}
+        cVista.notificarLanzamientoSimulado(mago, nombreHechizo, puntos);
+    }
 
     // Inicia los duelos mágicos y los muestra en la vista.
     public void iniciarDuelos() {
         try {
-            //  Cargar los magos desde el archivo properties
-            List<Mago> magos = cMago.obtenerMagos();
-            if (magos.isEmpty()) {
-                cVista.notificarError("No se encontraron magos en el archivo de propiedades.");
-                return;
-            }
-
-            this.listaMagos = magos;
-            cVista.notificarCargaExitosa(listaMagos);
-
-            // Iniciar la vista de duelos
             cVista.iniciarModoVisualizacionDuelos();
 
             int numeroDuelo = 1;
@@ -88,7 +84,8 @@ public class ControlGeneral {
 
                 // Notificar inicio del duelo
                 Thread.sleep(2000);
-                cVista.notificarInicioDuelo(numeroDuelo, ganadorActual, retador);
+                cVista.notificarInicioDuelo(numeroDuelo,
+                        ganadorActual, retador);
 
                 ganadorActual.resetPuntaje();
                 retador.resetPuntaje();
@@ -108,12 +105,14 @@ public class ControlGeneral {
                 hilo1.join();
                 hilo2.join();
 
-                while (ganadorActual.getPuntaje() < 250 && retador.getPuntaje() < 250) {
+                while (ganadorActual.getPuntaje() < 250 && retador
+                        .getPuntaje() < 250) {
                     Thread.sleep(100);
                 }
 
                 // Ganador
-                ganadorActual = (ganadorActual.getPuntaje() >= retador.getPuntaje())
+                ganadorActual = (ganadorActual.getPuntaje()
+                        >= retador.getPuntaje())
                         ? ganadorActual
                         : retador;
                 Thread.sleep(1000);
@@ -126,7 +125,8 @@ public class ControlGeneral {
             cVista.notificarCampeonFinal(ganadorActual);
 
         } catch (Exception ex) {
-            cVista.notificarError("Error al iniciar los duelos: " + ex.getMessage());
+            cVista.notificarError("Error al iniciar los duelos: "
+                    + ex.getMessage());
         }
     }
 
