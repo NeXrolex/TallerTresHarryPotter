@@ -59,6 +59,13 @@ public class ControlGeneral {
             ArrayList<String[]> hechizosDatos = cProps.extraerDatosHechizos();
             cHechizos.transformarHechizos(hechizosDatos);
 
+            // Extraer datos del gif
+            ArrayList<String[]> gifDatos = cProps.extraerGif();
+            if (gifDatos.isEmpty()) {
+                cVista.notificarError("No se encontraron rutas de GIF en el archivo de propiedades.");
+            } else {
+            }
+
         } catch (Exception ex) {
 
         }
@@ -133,4 +140,5 @@ public class ControlGeneral {
     public Hechizo obtenerHechizoAleatorio() {
         return cHechizos.obtenerHechizoAleatorio();
     }
+
 }

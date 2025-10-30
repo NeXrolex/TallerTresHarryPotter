@@ -47,7 +47,7 @@ public class VentanaPrincipal extends JFrame {
      */
     private void configurarVentana() {
         setTitle("Duelo de Magos - Torneo de los Tres Magos");
-        setSize(900, 650);
+        setSize(1100, 750);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout(10, 10));
@@ -80,11 +80,8 @@ public class VentanaPrincipal extends JFrame {
         panelTitulo.add(lblTitulo, BorderLayout.CENTER);
         add(panelTitulo, BorderLayout.NORTH);
 
-        // Panel izquierdo informativo de hechizos donde va el areaTexto
-        panelDatos = new JPanel();
-
         // Panel derecho gif magos
-        panelGif = new JPanel();
+        panelGif = new JPanel(new BorderLayout());
         panelGif.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createLineBorder(new Color(139, 0, 0), 2),
                 "Duelo",
@@ -93,7 +90,15 @@ public class VentanaPrincipal extends JFrame {
                 new Font("Arial", Font.BOLD, 14),
                 new Color(139, 0, 0)
         ));
+     
+        ImageIcon gif = new ImageIcon(getClass().getResource("/Specs/ImagesAndGifs/MagoAzul5.0.gif"));
+        JLabel gifLabel = new JLabel(gif);
+        panelGif.add(gifLabel, BorderLayout.WEST);
+         ImageIcon gif2 = new ImageIcon(getClass().getResource("/Specs/ImagesAndGifs/MagoRojo4.0.gif"));
+        JLabel gifLabel2 = new JLabel(gif2);
+        panelGif.add(gifLabel2, BorderLayout.EAST);
 
+        
         // Panel central con área de texto
         areaTexto = new JTextArea();
         areaTexto.setEditable(false);
@@ -214,4 +219,5 @@ public class VentanaPrincipal extends JFrame {
     public void limpiarTexto() {
         areaTexto.setText("");
     }
+    
 }

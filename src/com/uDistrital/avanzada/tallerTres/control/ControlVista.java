@@ -205,7 +205,7 @@ public class ControlVista implements ActionListener {
         vista.mostrarMensaje("¡Los duelos han finalizado!\nCampeón: "
                 + campeon.getNombre());
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         String comando = e.getActionCommand();
