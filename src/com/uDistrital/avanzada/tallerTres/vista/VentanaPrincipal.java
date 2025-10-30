@@ -14,10 +14,9 @@ import java.io.File;
  * Ventana principal de la aplicación Se encarga de mostrar todos los datos a
  * pedir y mostrar los resultados de los duelos magicos
  *
- * Ventana principal de la aplicación
- * Se encarga de mostrar todos los datos a pedir y mostrar los 
- * resultados de los duelos magicos
- * 
+ * Ventana principal de la aplicación Se encarga de mostrar todos los datos a
+ * pedir y mostrar los resultados de los duelos magicos
+ *
  * @author Alex,Jard,Stiven
  */
 public class VentanaPrincipal extends JFrame {
@@ -28,7 +27,8 @@ public class VentanaPrincipal extends JFrame {
     private JButton btnLimpiar;
     private JScrollPane scrollPane;
     private JFileChooser fileChooser;
-    private JPanel panelDatos, panelGif;
+    private JPanel panelDatos;
+    private JPanel panelGif;
 
     /**
      * Constructor encargado de inicializar la vista
@@ -47,7 +47,7 @@ public class VentanaPrincipal extends JFrame {
      */
     private void configurarVentana() {
         setTitle("Duelo de Magos - Torneo de los Tres Magos");
-        setSize(900, 650);
+        setSize(1100, 750);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout(10, 10));
@@ -61,8 +61,7 @@ public class VentanaPrincipal extends JFrame {
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "Archivos Properties (*.properties)", "properties");
         fileChooser.setFileFilter(filter);
-        fileChooser.setCurrentDirectory(new File
-        (System.getProperty("user.dir")));
+        fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
     }
 
     /**
@@ -81,11 +80,8 @@ public class VentanaPrincipal extends JFrame {
         panelTitulo.add(lblTitulo, BorderLayout.CENTER);
         add(panelTitulo, BorderLayout.NORTH);
 
-        // Panel izquierdo informativo de hechizos donde va el areaTexto
-        panelDatos = new JPanel();
-
         // Panel derecho gif magos
-        panelGif = new JPanel();
+        panelGif = new JPanel(new BorderLayout());
         panelGif.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createLineBorder(new Color(139, 0, 0), 2),
                 "Duelo",
@@ -94,6 +90,14 @@ public class VentanaPrincipal extends JFrame {
                 new Font("Arial", Font.BOLD, 14),
                 new Color(139, 0, 0)
         ));
+     
+        ImageIcon gif = new ImageIcon(getClass().getResource("/Specs/ImagesAndGifs/MagoAzul5.0.gif"));
+        JLabel gifLabel = new JLabel(gif);
+        panelGif.add(gifLabel, BorderLayout.WEST);
+         ImageIcon gif2 = new ImageIcon(getClass().getResource("/Specs/ImagesAndGifs/MagoRojo4.0.gif"));
+        JLabel gifLabel2 = new JLabel(gif2);
+        panelGif.add(gifLabel2, BorderLayout.EAST);
+
         
         // Panel central con área de texto
         areaTexto = new JTextArea();
@@ -147,9 +151,9 @@ public class VentanaPrincipal extends JFrame {
      * Metodo encargado de configurar la creacion de botones de manera
      * persanilzada
      *
-     * Metodo encargado de configurar la creacion de botones de 
-     * manera persanilzada
-     * 
+     * Metodo encargado de configurar la creacion de botones de manera
+     * persanilzada
+     *
      * @param texto Texto del botón
      * @param comando Comando de acción
      * @param color Color de fondo
@@ -176,11 +180,7 @@ public class VentanaPrincipal extends JFrame {
      */
     public File solicitarArchivoPropiedades() {
         int resultado = fileChooser.showOpenDialog(this);
-        if (resultado == JFileChooser.APPROVE_OPTION) {
-            return fileChooser.getSelectedFile();
-            
-        }
-        return null;
+        return fileChooser.getSelectedFile();
     }
 
     /**
@@ -219,4 +219,5 @@ public class VentanaPrincipal extends JFrame {
     public void limpiarTexto() {
         areaTexto.setText("");
     }
+    
 }
