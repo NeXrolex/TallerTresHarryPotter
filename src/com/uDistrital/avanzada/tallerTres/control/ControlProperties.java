@@ -159,7 +159,7 @@ public class ControlProperties {
                 continue;
             }
 
-            // Extraer ID de mago
+            // Extraer la ruta y el nombre del mago y agregarlos a la lista
             String nombreGif = key.substring("gif.".length()).trim();
             String ruta = props.getProperty(key, "").trim();
             if (nombreGif.isEmpty()) {
