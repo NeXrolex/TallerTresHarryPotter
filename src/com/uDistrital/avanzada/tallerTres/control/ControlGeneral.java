@@ -3,6 +3,7 @@ package com.uDistrital.avanzada.tallerTres.control;
 import com.uDistrital.avanzada.tallerTres.modelo.Hechizo;
 import com.uDistrital.avanzada.tallerTres.modelo.Mago;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,13 +59,6 @@ public class ControlGeneral {
             // Extraer datos de Hechizos
             ArrayList<String[]> hechizosDatos = cProps.extraerDatosHechizos();
             cHechizos.transformarHechizos(hechizosDatos);
-
-            // Extraer datos del gif
-            ArrayList<String[]> gifDatos = cProps.extraerGif();
-            if (gifDatos.isEmpty()) {
-                cVista.notificarError("No se encontraron rutas de GIF en el archivo de propiedades.");
-            } else {
-            }
 
         } catch (Exception ex) {
 
@@ -140,5 +134,12 @@ public class ControlGeneral {
     public Hechizo obtenerHechizoAleatorio() {
         return cHechizos.obtenerHechizoAleatorio();
     }
+    public ArrayList<String[]> obtenerGifsDatos() {
+    try {
+        return cProps.extraerGif();
+    } catch (IOException e) {
+        return new ArrayList<>();
+    }
+}
 
 }
