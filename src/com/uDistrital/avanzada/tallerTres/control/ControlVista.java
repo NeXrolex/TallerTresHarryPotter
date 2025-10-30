@@ -43,6 +43,15 @@ public class ControlVista implements ActionListener {
             vista.mostrarMensaje("Selección cancelada");
             return;
         }
+        if (!archivo.getName().toLowerCase().endsWith(".properties")) {
+            vista.mostrarError("El archivo seleccionado no es un archivo .properties válido.");
+            return;
+        }
+
+        if (!archivo.isFile()) {
+            vista.mostrarError("El archivo seleccionado no es válido.");
+            return;
+        }
 
         controlGeneral.cargarProperties(archivo);
     }
@@ -140,7 +149,7 @@ public class ControlVista implements ActionListener {
      * @param mago2 Segundo mago
      */
     public void notificarInicioDuelo(int numeroDuelo, Mago mago1, Mago mago2) {
-        escribirEnConsola("\n│         DUELO #" + numeroDuelo 
+        escribirEnConsola("\n│         DUELO #" + numeroDuelo
                 + "             \n");
 
         escribirEnConsola(mago1.getNombre() + " (" + mago1.getCasa() + ")");
@@ -193,7 +202,7 @@ public class ControlVista implements ActionListener {
         escribirEnConsola("Total de hechizos: " + campeon.getCantidadHechizos()
                 + "\n");
 
-        vista.mostrarMensaje("¡Los duelos han finalizado!\nCampeón: " 
+        vista.mostrarMensaje("¡Los duelos han finalizado!\nCampeón: "
                 + campeon.getNombre());
     }
 

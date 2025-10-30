@@ -14,10 +14,9 @@ import java.io.File;
  * Ventana principal de la aplicación Se encarga de mostrar todos los datos a
  * pedir y mostrar los resultados de los duelos magicos
  *
- * Ventana principal de la aplicación
- * Se encarga de mostrar todos los datos a pedir y mostrar los 
- * resultados de los duelos magicos
- * 
+ * Ventana principal de la aplicación Se encarga de mostrar todos los datos a
+ * pedir y mostrar los resultados de los duelos magicos
+ *
  * @author Alex,Jard,Stiven
  */
 public class VentanaPrincipal extends JFrame {
@@ -62,8 +61,7 @@ public class VentanaPrincipal extends JFrame {
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "Archivos Properties (*.properties)", "properties");
         fileChooser.setFileFilter(filter);
-        fileChooser.setCurrentDirectory(new File
-        (System.getProperty("user.dir")));
+        fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
     }
 
     /**
@@ -95,7 +93,7 @@ public class VentanaPrincipal extends JFrame {
                 new Font("Arial", Font.BOLD, 14),
                 new Color(139, 0, 0)
         ));
-        
+
         // Panel central con área de texto
         areaTexto = new JTextArea();
         areaTexto.setEditable(false);
@@ -148,9 +146,9 @@ public class VentanaPrincipal extends JFrame {
      * Metodo encargado de configurar la creacion de botones de manera
      * persanilzada
      *
-     * Metodo encargado de configurar la creacion de botones de 
-     * manera persanilzada
-     * 
+     * Metodo encargado de configurar la creacion de botones de manera
+     * persanilzada
+     *
      * @param texto Texto del botón
      * @param comando Comando de acción
      * @param color Color de fondo
@@ -177,11 +175,7 @@ public class VentanaPrincipal extends JFrame {
      */
     public File solicitarArchivoPropiedades() {
         int resultado = fileChooser.showOpenDialog(this);
-        if (resultado == JFileChooser.APPROVE_OPTION) {
-            return fileChooser.getSelectedFile();
-            
-        }
-        return null;
+        return fileChooser.getSelectedFile();
     }
 
     /**
