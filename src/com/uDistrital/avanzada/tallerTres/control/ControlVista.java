@@ -10,6 +10,7 @@ import com.uDistrital.avanzada.tallerTres.vista.VentanaPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.SwingUtilities;
 
@@ -186,6 +187,28 @@ public class ControlVista implements ActionListener {
                 + "\n");
 
     }
+    /**
+     * Metodo encargado de establecer la logica para determinar el mago
+     * correspondiente
+     * @param gifDatos ruta de los gift
+     */
+    public void cargarGifs(ArrayList<String[]> gifDatos) {
+        
+        for (String[] datos : gifDatos) {
+            String nombreGif = datos[0];          
+            String rutaGif = datos[1];            
+
+            
+            if (nombreGif.equalsIgnoreCase("magoAzul")) {
+                vista.establecerGifMagoAzul(rutaGif);
+            } else if (nombreGif.equalsIgnoreCase("magoRojo")) {
+                vista.establecerGifMagoRojo(rutaGif);
+            }
+        }
+
+        
+        vista.refrescarPanelGifs();
+    }
 
     /**
      * Notifica el ganador de un duelo
@@ -205,7 +228,7 @@ public class ControlVista implements ActionListener {
         vista.mostrarMensaje("¡Los duelos han finalizado!\nCampeón: "
                 + campeon.getNombre());
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String comando = e.getActionCommand();
@@ -215,6 +238,7 @@ public class ControlVista implements ActionListener {
                 solicitarCargarArchivo();
                 break;
             case "INICIAR":
+                cargarGifs(controlGeneral.obtenerGifsDatos());
                 new Thread(() -> controlGeneral.iniciarDuelos()).start();
                 break;
             case "LIMPIAR":

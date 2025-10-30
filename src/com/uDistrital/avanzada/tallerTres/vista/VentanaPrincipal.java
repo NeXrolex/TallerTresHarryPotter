@@ -29,6 +29,8 @@ public class VentanaPrincipal extends JFrame {
     private JFileChooser fileChooser;
     private JPanel panelDatos;
     private JPanel panelGif;
+    private JLabel gifLabel;
+    private JLabel gifLabel2;
 
     /**
      * Constructor encargado de inicializar la vista
@@ -90,15 +92,13 @@ public class VentanaPrincipal extends JFrame {
                 new Font("Arial", Font.BOLD, 14),
                 new Color(139, 0, 0)
         ));
-     
-        ImageIcon gif = new ImageIcon(getClass().getResource("/Specs/ImagesAndGifs/MagoAzul5.0.gif"));
-        JLabel gifLabel = new JLabel(gif);
+
+        gifLabel = new JLabel();
         panelGif.add(gifLabel, BorderLayout.WEST);
-         ImageIcon gif2 = new ImageIcon(getClass().getResource("/Specs/ImagesAndGifs/MagoRojo4.0.gif"));
-        JLabel gifLabel2 = new JLabel(gif2);
+
+        gifLabel2 = new JLabel();
         panelGif.add(gifLabel2, BorderLayout.EAST);
 
-        
         // Panel central con área de texto
         areaTexto = new JTextArea();
         areaTexto.setEditable(false);
@@ -116,6 +116,12 @@ public class VentanaPrincipal extends JFrame {
                 new Font("Arial", Font.BOLD, 14),
                 new Color(139, 0, 0)
         ));
+
+        gifLabel = new JLabel();
+        gifLabel2 = new JLabel();
+
+        panelGif.add(gifLabel, BorderLayout.WEST);
+        panelGif.add(gifLabel2, BorderLayout.EAST);
 
         // Panel inferior con botones
         JSplitPane panelesBatalla = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scrollPane, panelGif);
@@ -219,5 +225,35 @@ public class VentanaPrincipal extends JFrame {
     public void limpiarTexto() {
         areaTexto.setText("");
     }
-    
+    /**
+     * Establece el gif del mago rojo
+     * @param rutaGif ruta de el gif
+     */
+    public void establecerGifMagoRojo(String rutaGif) {
+
+        ImageIcon gif = new ImageIcon(getClass().getResource(rutaGif));
+        gifLabel2.setIcon(gif);
+
+    }
+    /**
+     * Establece el gif del mago azul 
+     * @param rutaGif ruta de el gif
+     */
+    public void establecerGifMagoAzul(String rutaGif) {
+
+        ImageIcon gif = new ImageIcon(getClass().getResource(rutaGif));
+        gifLabel.setIcon(gif);
+
+    }
+
+    /**
+     * Refresca el panel de GIFs 
+     */
+    public void refrescarPanelGifs() {
+        if (panelGif != null) {
+            panelGif.revalidate();
+            panelGif.repaint();
+        }
+    }
+
 }
