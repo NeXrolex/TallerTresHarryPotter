@@ -239,7 +239,7 @@ public class ControlVista implements ActionListener {
                 break;
             case "INICIAR":
                 cargarGifs(controlGeneral.obtenerGifsDatos());
-                new Thread(() -> controlGeneral.iniciarDuelos()).start();
+                controlGeneral.iniciarDuelosAsincronamente();
                 break;
             case "LIMPIAR":
                 limpiarConsola();
