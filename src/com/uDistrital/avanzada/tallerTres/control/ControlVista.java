@@ -53,7 +53,8 @@ public class ControlVista implements ActionListener {
      * @param magos Lista de magos cargados
      */
     public void notificarCargaExitosa(List<Mago> magos) {
-        vista.mostrarMensaje("Archivo cargado exitosamente.\nMagos cargados: " + magos.size());
+        vista.mostrarMensaje("Archivo cargado exitosamente.\nMagos cargados: "
+                + magos.size());
         mostrarMagosEnVista(magos);
     }
 
@@ -117,7 +118,8 @@ public class ControlVista implements ActionListener {
      * @param nombreHechizo Nombre del hechizo
      * @param puntosHechizo Puntos obtenidos
      */
-    public void notificarLanzamientoSimulado(Mago mago, String nombreHechizo, int puntosHechizo) {
+    public void notificarLanzamientoSimulado(Mago mago, String nombreHechizo,
+            int puntosHechizo) {
         SwingUtilities.invokeLater(() -> {
             String mensaje = String.format(
                     " %s lanza %s (+%d pts) | Total: %d\n",
@@ -138,7 +140,8 @@ public class ControlVista implements ActionListener {
      * @param mago2 Segundo mago
      */
     public void notificarInicioDuelo(int numeroDuelo, Mago mago1, Mago mago2) {
-        escribirEnConsola("\n│         DUELO #" + numeroDuelo + "             \n");
+        escribirEnConsola("\n│         DUELO #" + numeroDuelo 
+                + "             \n");
 
         escribirEnConsola(mago1.getNombre() + " (" + mago1.getCasa() + ")");
         escribirEnConsola(" VS ");
@@ -170,7 +173,8 @@ public class ControlVista implements ActionListener {
         escribirEnConsola(ganador.getNombre() + "\n");
         escribirEnConsola("Casa: " + ganador.getCasa() + "\n");
         escribirEnConsola("Puntaje: " + ganador.getPuntaje() + "\n");
-        escribirEnConsola("Hechizos lanzados: " + ganador.getCantidadHechizos() + "\n");
+        escribirEnConsola("Hechizos lanzados: " + ganador.getCantidadHechizos()
+                + "\n");
 
     }
 
@@ -186,9 +190,11 @@ public class ControlVista implements ActionListener {
         escribirEnConsola("Nombre: " + campeon.getNombre() + "\n");
         escribirEnConsola("Casa: " + campeon.getCasa() + "\n");
         escribirEnConsola("Puntaje final: " + campeon.getPuntaje() + "\n");
-        escribirEnConsola("Total de hechizos: " + campeon.getCantidadHechizos() + "\n");
+        escribirEnConsola("Total de hechizos: " + campeon.getCantidadHechizos()
+                + "\n");
 
-        vista.mostrarMensaje("¡Los duelos han finalizado!\nCampeón: " + campeon.getNombre());
+        vista.mostrarMensaje("¡Los duelos han finalizado!\nCampeón: " 
+                + campeon.getNombre());
     }
 
     @Override
