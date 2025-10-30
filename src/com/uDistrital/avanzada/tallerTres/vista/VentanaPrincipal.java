@@ -28,7 +28,8 @@ public class VentanaPrincipal extends JFrame {
     private JButton btnLimpiar;
     private JScrollPane scrollPane;
     private JFileChooser fileChooser;
-    private JPanel panelDatos, panelGif;
+    private JPanel panelDatos;
+    private JPanel panelGif;
 
     /**
      * Constructor encargado de inicializar la vista
