@@ -131,15 +131,22 @@ public class ControlGeneral {
         }
     }
 
+    // Inicia los duelos mágicos en un hilo separado para no bloquear la interfaz.
+    public void iniciarDuelosAsincronamente() {
+        Thread hiloDuelos = new Thread(() -> iniciarDuelos());
+        hiloDuelos.start();
+    }
+
     public Hechizo obtenerHechizoAleatorio() {
         return cHechizos.obtenerHechizoAleatorio();
     }
+
     public ArrayList<String[]> obtenerGifsDatos() {
-    try {
-        return cProps.extraerGif();
-    } catch (IOException e) {
-        return new ArrayList<>();
+        try {
+            return cProps.extraerGif();
+        } catch (IOException e) {
+            return new ArrayList<>();
+        }
     }
-}
 
 }
