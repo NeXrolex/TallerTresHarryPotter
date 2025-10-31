@@ -117,12 +117,6 @@ public class VentanaPrincipal extends JFrame {
                 new Color(139, 0, 0)
         ));
 
-        gifLabel = new JLabel();
-        gifLabel2 = new JLabel();
-
-        panelGif.add(gifLabel, BorderLayout.WEST);
-        panelGif.add(gifLabel2, BorderLayout.EAST);
-
         // Panel inferior con botones
         JSplitPane panelesBatalla = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scrollPane, panelGif);
         panelesBatalla.setDividerLocation(550);
@@ -225,8 +219,10 @@ public class VentanaPrincipal extends JFrame {
     public void limpiarTexto() {
         areaTexto.setText("");
     }
+
     /**
      * Establece el gif del mago rojo
+     *
      * @param rutaGif ruta de el gif
      */
     public void establecerGifMagoRojo(String rutaGif) {
@@ -235,8 +231,10 @@ public class VentanaPrincipal extends JFrame {
         gifLabel2.setIcon(gif);
 
     }
+
     /**
-     * Establece el gif del mago azul 
+     * Establece el gif del mago azul
+     *
      * @param rutaGif ruta de el gif
      */
     public void establecerGifMagoAzul(String rutaGif) {
@@ -247,7 +245,7 @@ public class VentanaPrincipal extends JFrame {
     }
 
     /**
-     * Refresca el panel de GIFs 
+     * Refresca el panel de GIFs
      */
     public void refrescarPanelGifs() {
         if (panelGif != null) {
