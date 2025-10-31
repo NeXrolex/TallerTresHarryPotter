@@ -31,7 +31,11 @@ public class ControlVista implements ActionListener {
      */
     public ControlVista(ControlGeneral general) {
         this.controlGeneral = general;
-        this.vista = new VentanaPrincipal(this);
+        this.vista = new VentanaPrincipal();
+        this.vista.getBtnCargar().addActionListener(this);
+        this.vista.getBtnIniciar().addActionListener(this);
+        this.vista.getBtnSalir().addActionListener(this);
+        this.vista.getBtnLimpiar().addActionListener(this);
     }
 
     /**
@@ -228,34 +232,45 @@ public class ControlVista implements ActionListener {
         vista.mostrarMensaje("¡Los duelos han finalizado!\nCampeón: "
                 + campeon.getNombre());
     }
-    
+
     /**
      * Orquesta salir de la aplicacion
-     * 
+     *
      */
     private void salirAplicacion() {
         System.exit(0);
     }
 
+    /**
+     * Maneja los eventos de acción generados por los distintos botones de la
+     * interfaz gráfica.
+     *
+     * Este método se ejecuta automáticamente cuando el usuario interactúa con
+     * alguno de los botones de la ventana principal. Dependiendo del botón
+     * presionado, se ejecuta la acción correspondiente:
+     *
+     * btnCargar: Solicita al usuario cargar un archivo con los datos
+     * requeridos. btnIniciar: Carga los GIFs en la vista y da inicio a los
+     * duelos de forma asíncrona. btnLimpiar: Limpia la consola o área de
+     * resultados en la interfaz. btnSalir: Cierra la aplicación de manera
+     * controlada.
+     *
+     * @param e Objeto {@link ActionEvent} que contiene información sobre el
+     * evento generado, incluyendo la fuente que lo originó (el botón
+     * presionado).
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
-        String comando = e.getActionCommand();
-
-        switch (comando) {
-            case "CARGAR":
-                solicitarCargarArchivo();
-                break;
-            case "INICIAR":
-                cargarGifs(controlGeneral.obtenerGifsDatos());
-                controlGeneral.iniciarDuelosAsincronamente();
-                break;
-            case "LIMPIAR":
-                limpiarConsola();
-                break;
-            case "SALIR":
-                salirAplicacion();
-            default:
-                break;
+        Object a = e.getSource();
+        if (a == vista.getBtnCargar()) {
+            solicitarCargarArchivo();
+        } else if (a == vista.getBtnIniciar()) {
+            cargarGifs(controlGeneral.obtenerGifsDatos());
+            controlGeneral.iniciarDuelosAsincronamente();
+        } else if (a == vista.getBtnLimpiar()) {
+            limpiarConsola();
+        } else if (a == vista.getBtnSalir()) {
+            salirAplicacion();
         }
     }
 }

@@ -7,7 +7,6 @@ package com.uDistrital.avanzada.tallerTres.vista;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.io.File;
 
 /**
@@ -38,10 +37,10 @@ public class VentanaPrincipal extends JFrame {
      *
      * @param listener Listener para los botones
      */
-    public VentanaPrincipal(ActionListener listener) {
+    public VentanaPrincipal() {
         configurarVentana();
         configurarFileChooser();
-        inicializarComponentes(listener);
+        inicializarComponentes();
         setVisible(true);
     }
 
@@ -72,7 +71,7 @@ public class VentanaPrincipal extends JFrame {
      *
      * @param listener Listener para eventos
      */
-    private void inicializarComponentes(ActionListener listener) {
+    private void inicializarComponentes() {
         // Panel superior con título
         JPanel panelTitulo = new JPanel(new BorderLayout());
         panelTitulo.setBackground(new Color(139, 0, 0));
@@ -118,12 +117,6 @@ public class VentanaPrincipal extends JFrame {
                 new Color(139, 0, 0)
         ));
 
-        gifLabel = new JLabel();
-        gifLabel2 = new JLabel();
-
-        panelGif.add(gifLabel, BorderLayout.WEST);
-        panelGif.add(gifLabel2, BorderLayout.EAST);
-
         // Panel inferior con botones
         JSplitPane panelesBatalla = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
                 scrollPane, panelGif);
@@ -146,16 +139,11 @@ public class VentanaPrincipal extends JFrame {
         btnSalir = crearBoton("Salir", "SALIR",
                 new Color(255, 69, 0));
 
-        btnCargar.addActionListener(listener);
-        btnIniciar.addActionListener(listener);
-        btnLimpiar.addActionListener(listener);
-        btnSalir.addActionListener(listener);
-        
         panelBotones.add(btnCargar);
         panelBotones.add(btnIniciar);
         panelBotones.add(btnLimpiar);
         panelBotones.add(btnSalir);
-        
+
         add(panelBotones, BorderLayout.SOUTH);
     }
 
@@ -193,6 +181,46 @@ public class VentanaPrincipal extends JFrame {
     public File solicitarArchivoPropiedades() {
         int resultado = fileChooser.showOpenDialog(this);
         return fileChooser.getSelectedFile();
+    }
+
+    /**
+     * Devuelve el botón encargado de cargar los datos o archivos requeridos por
+     * la aplicación.
+     *
+     * @return Objeto {@link JButton} correspondiente al botón "Cargar".
+     */
+    public JButton getBtnCargar() {
+        return btnCargar;
+    }
+
+    /**
+     * Devuelve el botón que permite iniciar el proceso principal de la
+     * aplicación.
+     *
+     * @return Objeto {@link JButton} correspondiente al botón "Iniciar".
+     */
+    public JButton getBtnIniciar() {
+        return btnIniciar;
+    }
+
+    /**
+     * Devuelve el botón utilizado para limpiar o restablecer la interfaz,
+     * eliminando datos cargados o resultados mostrados.
+     *
+     * @return Objeto {@link JButton} correspondiente al botón "Limpiar".
+     */
+    public JButton getBtnLimpiar() {
+        return btnLimpiar;
+    }
+
+    /**
+     * Devuelve el botón que permite cerrar la aplicación o salir de la ventana
+     * principal.
+     *
+     * @return Objeto {@link JButton} correspondiente al botón "Salir".
+     */
+    public JButton getBtnSalir() {
+        return btnSalir;
     }
 
     /**
