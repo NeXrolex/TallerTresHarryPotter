@@ -187,18 +187,19 @@ public class ControlVista implements ActionListener {
                 + "\n");
 
     }
+
     /**
      * Metodo encargado de establecer la logica para determinar el mago
      * correspondiente
+     *
      * @param gifDatos ruta de los gift
      */
     public void cargarGifs(ArrayList<String[]> gifDatos) {
-        
-        for (String[] datos : gifDatos) {
-            String nombreGif = datos[0];          
-            String rutaGif = datos[1];            
 
-            
+        for (String[] datos : gifDatos) {
+            String nombreGif = datos[0];
+            String rutaGif = datos[1];
+
             if (nombreGif.equalsIgnoreCase("magoAzul")) {
                 vista.establecerGifMagoAzul(rutaGif);
             } else if (nombreGif.equalsIgnoreCase("magoRojo")) {
@@ -206,7 +207,6 @@ public class ControlVista implements ActionListener {
             }
         }
 
-        
         vista.refrescarPanelGifs();
     }
 
@@ -228,6 +228,14 @@ public class ControlVista implements ActionListener {
         vista.mostrarMensaje("¡Los duelos han finalizado!\nCampeón: "
                 + campeon.getNombre());
     }
+    
+    /**
+     * Orquesta salir de la aplicacion
+     * 
+     */
+    private void salirAplicacion() {
+        System.exit(0);
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -244,6 +252,8 @@ public class ControlVista implements ActionListener {
             case "LIMPIAR":
                 limpiarConsola();
                 break;
+            case "SALIR":
+                salirAplicacion();
             default:
                 break;
         }
