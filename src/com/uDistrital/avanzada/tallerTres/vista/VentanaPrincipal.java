@@ -25,6 +25,7 @@ public class VentanaPrincipal extends JFrame {
     private JButton btnCargar;
     private JButton btnIniciar;
     private JButton btnLimpiar;
+    private JButton btnSalir;
     private JScrollPane scrollPane;
     private JFileChooser fileChooser;
     private JPanel panelDatos;
@@ -124,7 +125,8 @@ public class VentanaPrincipal extends JFrame {
         panelGif.add(gifLabel2, BorderLayout.EAST);
 
         // Panel inferior con botones
-        JSplitPane panelesBatalla = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scrollPane, panelGif);
+        JSplitPane panelesBatalla = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
+                scrollPane, panelGif);
         panelesBatalla.setDividerLocation(550);
         panelesBatalla.setEnabled(false);
         panelesBatalla.setDividerSize(0);
@@ -141,15 +143,19 @@ public class VentanaPrincipal extends JFrame {
                 new Color(178, 34, 34));
         btnLimpiar = crearBoton(" Limpiar", "LIMPIAR",
                 new Color(70, 130, 180));
+        btnSalir = crearBoton("Salir", "SALIR",
+                new Color(255, 69, 0));
 
         btnCargar.addActionListener(listener);
         btnIniciar.addActionListener(listener);
         btnLimpiar.addActionListener(listener);
-
+        btnSalir.addActionListener(listener);
+        
         panelBotones.add(btnCargar);
         panelBotones.add(btnIniciar);
         panelBotones.add(btnLimpiar);
-
+        panelBotones.add(btnSalir);
+        
         add(panelBotones, BorderLayout.SOUTH);
     }
 
@@ -225,8 +231,10 @@ public class VentanaPrincipal extends JFrame {
     public void limpiarTexto() {
         areaTexto.setText("");
     }
+
     /**
      * Establece el gif del mago rojo
+     *
      * @param rutaGif ruta de el gif
      */
     public void establecerGifMagoRojo(String rutaGif) {
@@ -235,8 +243,10 @@ public class VentanaPrincipal extends JFrame {
         gifLabel2.setIcon(gif);
 
     }
+
     /**
-     * Establece el gif del mago azul 
+     * Establece el gif del mago azul
+     *
      * @param rutaGif ruta de el gif
      */
     public void establecerGifMagoAzul(String rutaGif) {
@@ -247,7 +257,7 @@ public class VentanaPrincipal extends JFrame {
     }
 
     /**
-     * Refresca el panel de GIFs 
+     * Refresca el panel de GIFs
      */
     public void refrescarPanelGifs() {
         if (panelGif != null) {
